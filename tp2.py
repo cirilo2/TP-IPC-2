@@ -54,7 +54,25 @@ def datetime2str(date, fmt="%Y-%m-%d"):
 
 
 """ >>>> DEFINAN SUS FUNCIONES A PARTIR DE AQUÍ >>>> """
+#Funcion 1 
+def read_file (archivo):
+    diccionario = {}
+    with open ('bolsa.csv', 'r') as file: 
+        f = file.readline().sptrip().split(",")
+        diccionario = read_file("bolsa.csv") 
+        for valor in f:
+            diccionario[valor] = []    
+        for line in file:
+            line = line.strip().split(',')
+            for index, value in enumerate(line):
+                if index == 0:
+                    diccionario[f[index]].append(str2datetime(value))
+                else:
+                    diccionario[f[index]].append(float(value))
+    return diccionario
 
+diccionario1 = read_file("bolsa.csv")
+date = diccionario1["Date"]
 
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
