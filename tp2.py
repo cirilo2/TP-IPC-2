@@ -196,23 +196,6 @@ def max_gain(nombreaccion, diccinario1, fecha_venta):
     ganancia = (precio_venta - precio_compra) / precio_compra
     return fecha, ganancia
 
-#5
-# Entrada:
-# Salida:
-
-def report_max_gains(diccionario, fecha_venta): 
-    archivo = open('resumen_mejor_compra.txt', 'w')
-    acciones = list(diccionario1.keys())[1:]
-    for accion in acciones: 
-        retorno_ganancia,fecha_compra = max_gain(accion, diccionario, fecha_venta)
-        mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
-        archivo.write(mensaje)
-    archivo.close()
-test = report_max_gains(diccionario1, "2022-02-28")
-
-
-#6
-
 def max_gain( accion, diccionario , fecha_venta):
 
     fechas = diccionario1["fecha"]
@@ -232,7 +215,48 @@ def max_gain( accion, diccionario , fecha_venta):
             precio_venta = pre
             break
     ganancia = (precio_venta - precio_compra)/precio_compra
-    return fecha_compra , ganancia 
+    return fecha_compra , ganancia     
+
+#5
+# Entrada:
+# Salida:
+
+def report_max_gains(diccionario, fecha_venta): 
+    archivo = open('resumen_mejor_compra.txt', 'w')
+    acciones = list(diccionario1.keys())[1:]
+    for accion in acciones: 
+        retorno_ganancia,fecha_compra = max_gain(accion, diccionario, fecha_venta)
+        mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
+        archivo.write(mensaje)
+    archivo.close()
+test = report_max_gains(diccionario1, "2022-02-28")
+
+
+#6
+
+def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022-06-01"):
+    e = datetime2str(diccionario1)
+    principio = e.index(start)
+    final = e.index(end)
+    print(final)
+    eje_x = []
+    eje_y = []
+    todo_fecha = e[principio:final+1]
+    todo_accion_grafica = diccionario1[accion_grafica][principio:final+1]
+    for x in todo_fecha:
+        eje_x.append(x)
+    for y in todo_accion_grafica:
+        eje_y.append(int(y))
+    
+    plt.plot(str2datetime(eje_x), eje_y, color = "r")
+    plt.title(f'Acciones de {accion_grafica}')
+    plt.xticks(rotation=65)
+    plt.gcf().subplots_adjust(bottom=0.20)
+    plt.xlabel('Fechas')
+    plt.ylabel('Acciones')
+    plt.show()
+    plt.savefig(f"price_{accion_grafica}.png")
+
 
 #7
 
