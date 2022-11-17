@@ -54,14 +54,16 @@ def datetime2str(date, fmt="%Y-%m-%d"):
 
 
 """ >>>> DEFINAN SUS FUNCIONES A PARTIR DE AQUÍ >>>> """
-#Funcion 1 
-# Entrada: Ruta hacia un archivo 
+#1 
+# Esta funcion crea un diccionario con claves y valores a partir de un archivo csv. 
+# Entrada: Ruta hacia un archivo csv
 # Salida: Diccionario con informacion del archivo 
+
 def read_file (archivo):
-    dic = {}
     with open (archivo, 'r') as file: 
+        dic = {}
         f = file.readline().sptrip().split(",")
-        dic = read_file("bolsa.csv") 
+        dic = read_file("TP 2/bolsa.csv") 
         for valor in f:
             dic[valor] = []    
         for line in file:
@@ -73,40 +75,37 @@ def read_file (archivo):
                     dic[f[index]].append(float(value))
     return dic
 
-diccionario1 = read_file("bolsa.csv")
+diccionario1 = read_file("TP 2/bolsa.csv")
 date = diccionario1["Date"]
 
-#Funcion 2
+#2
 # Lo que buscamos hacer cn esta funcion fue, calcular el precio promedio mes a mes, devolviendo dos secuencias, una con la fecha del primer dia de cada mes, y la segunda con ls precios promedios.
-# Entrada: Accion y diccionario con la informacion del archivo creada en la funcion1 
+# Entrada: Nombre de la ccion y diccionario con la informacion del archivo creada en la funcion1 
 # Salida: Dos secuencias con la misma longitud: una con la fecha del primer dia de cada mes y la segunda con los precios promedios de ese mes. 
 
-def monthly_average (nombreaccion, diccionario):
-# Fechas 
-meses = []
-fechas = []
-fechas = diccionario1['Date']
-for fecha in fechas:
-    mes = fecha.month
-    if mes not in meses:
-        meses.append(mes)
-        fechas.append(fecha)
+def monthly_average (nombreaccion, diccionario1):
+    meses = []
+    fechas = []
+    fechas = diccionario1['Date']
+    for fecha in fechas:
+        mes = fecha.month
+        if mes not in meses:
+            meses.append(mes)
+            fechas.append(fecha)
 
-
-# Promedio 
-    promedio =  []
-    enero = []
-    febrero = []
-    marzo = []
-    abril = []
-    mayo = []
-    junio = []
-    julio = []
-    agosto = []
-    septiembre = []
-    octubre = []
-    noviembre = []
-    diciembre = []
+promedio_total = []
+enero = []
+febrero = []
+marzo = []
+abril = []
+mayo = []
+junio = []
+julio = []
+agosto = []
+septiembre = []
+octubre = []
+noviembre = []
+diciembre = []
 
 for i, fecha in enumerate(diccionario1['Date']):
     mes = fecha.month
@@ -134,61 +133,81 @@ for i, fecha in enumerate(diccionario1['Date']):
             noviembre.append(diccionario1[nombreaccion][i])
     elif mes == 12:
             diciembre.append(diccionario1[nombreaccion][i])
-    elif mes == 1:
-            enero.append(diccionario1[nombreaccion][i])
-    elif mes == 2:
-            febrero.append(diccionario1[nombreaccion][i])
-    elif mes == 3:
-           marzo.append(diccionario1[nombreaccion][i])
-    elif mes == 4:
-            abril.append(diccionario1[nombreaccion][i])
-    elif mes == 5:
-            mayo.append(diccionario1[nombreaccion][i])
-    elif mes == 6:
-            junio.append(diccionario1[nombreaccion][i])
-    elif mes == 7:
-            julio.append(diccionario1[nombreaccion][i])
-    elif mes == 8:
-            agosto.append(diccionario1[nombreaccion][i])
-    elif mes == 9:
-            septiembre.append(diccionario1[nombreaccion][i])
+
+
+    promedio1 = sum(enero) / len(enero)
+    promedio2 = sum(febrero) / len(febrero)
+    promedio3 = sum(marzo) / len(marzo)
+    promedio4 = sum(abril) / len(abril)
+    promedio5 = sum(mayo) / len(mayo)
+    promedio6 = sum(junio) / len(junio)
+    promedio7 = sum(julio) / len(julio)
+    promedio8 = sum(agosto) / len(agosto)
+    promedio9 = sum(septiembre) / len(septiembre)
+    promedio10 = sum(octubre)/ len(octubre)
+    promedio11 = sum(noviembre) / len(noviembre)
+    promedio12 = sum(diciembre) / len(diciembre)
+   
+    promedio_total.append(promedio1)
+    promedio_total.append(promedio2)
+    promedio_total.append(promedio3)
+    promedio_total.append(promedio4)
+    promedio_total.append(promedio5)
+    promedio_total.append(promedio6)
+    promedio_total.append(promedio7)
+    promedio_total.append(promedio8)
+    promedio_total.append(promedio9)
+    promedio_total.append(promedio10)
+    promedio_total.append(promedio11) 
+    promedio_total.append(promedio12) 
+    
+    return fechas, promedio_total
+
+promedioo_accion = monthly_average("SATL", diccionario1)
 
        
 # Creando lista de las fechas del primer dia de cada mes 
-    for fecha in diccionario1['Date']:
-        mes = fecha.month
-        if mes not in meses :
-            fechas.append(mes)
-            meses.append(fecha)
+for fecha in diccionario1['Date']:
+    mes = fecha.month
+    if mes not in meses:
+        fechas.append(mes)
+        meses.append(fecha)
 
 # Calculando los precios promedio:
 
-#Funcion 3
-with open('monthly_average_SATL.csv', 'w') as file:
+#3
+with open('TP 2/monthly_average_SATL.csv', 'w', encoding="utf-8") as file:
     file.write("Date,SATL")
     fechas, promedios = monthly_average("SATL", diccionario1)
     for i in range(len(fechas)):
         file.write(f"{fechas[i]},{promedios[i]}\n")
 
-#Funcion 4
+
+#4
+# La funcion busca la fecha de cmpra en el diccionario, la cual genero la mayor ganancia. 
+# Entrada: nombre de una acción, el diccionario de datos y una fecha de venta. 
+# Salida:fecha de compra (en el pasado) que hubiera generado la mayor ganancia. Retorno de la inversión.
+# ganancia = (precio de venta - precio de compra) / precio de compra
+
+def max_gain(nombreaccion, diccinario1, fecha_venta):
+    fecha_venta = str2datetime(fecha_venta)
+    valores = diccinario1[nombreaccion]
+    ind = diccinario1["Date"].index(fecha_venta)
+    precio_venta = valores[ind]
+    precio_compra = precio_venta
+    fecha = diccinario1["Date"][ind]
+    for x in range(ind):
+        if valores[x] < precio_compra:
+            precio_compra = valores[x]
+            fecha = diccinario1["Date"][x]
+    ganancia = (precio_venta - precio_compra) / precio_compra
+    return fecha, ganancia
+
+
+#5
 # Entrada:
 # Salida:
-def max_gain(nombre_accion, diccionario, fecha_venta):
-    fecha_venta = str2datetime(fecha_venta)
-    values = diccionario[nombre_accion]
-    ind = diccionario["Date"].index(fecha_venta)
-    valor = values[ind]
-    menor = valor
-    fecha_compra = diccionario["Date"][ind]
-    for x in range(ind):
-        if values[x] < menor:
-            menor = values[x]
-            fecha_compra = diccionario["Date"][x]
-    ganancia = (valor - menor) / menor
-    return fecha_compra, ganancia
 
-
-#Funcion 5
 
 def report_max_gains(diccionario, fecha_venta): 
     archivo = open('resumen_mejor_compra.txt', 'w')
@@ -198,46 +217,12 @@ def report_max_gains(diccionario, fecha_venta):
         mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
         archivo.write(mensaje)
     archivo.close()
-prueba = report_max_gains(diccionario, "2022-02-28")
+prueba = report_max_gains(diccionario1, "2022-02-28")
 
 
-#Funcion 6
+#6
 
-#Funcion 7
-
-def monthly_average_bar_plot(accion,diccionaro1):
-    fechas, promedio = monthly_average(accion, diccionario1)
-
-    plt.figure()
-    plt.rc('xtick', labelsize = 9)
-    plt.bar(fechas, promedio)
-    plt.xticks(rotation = 30)
-    plt.xlabel("Fecha", horizontalalignment = 'right')
-    plt.ylabel("Precio accion")
-    plt.gfc().subplots_adjust(bottom = 0.15)
-
-    grafico = plt.savefig(f"monthly_average_bar_plot_{accion}.png")
-    return grafico
-
-def plot_max_gain(fecha_venta, diccionario1):
-        l_ganancias = []
-        l_acciones = []
-
-        for accion in diccionario1.keys():
-            if accion == "date":
-                continue
-            fecha , ganancia = max_gain(accion , diccionario1 , fecha_venta)
-            l_ganancias.append(ganancia)
-            l_acciones.append(accion)
-
-        plt.figure()
-        plt.bar(l_acciones, l_ganancias)
-
-        plt.xlabel("ACIONES")
-        plt.ylabel("GANANCIA MEJOR INVERSION")
-        plt.gfc().subplots_adjust(bottom = 0.15)
-        grafico = plt.savefig("max_gains.png")
-        return grafico
+#7
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
 
