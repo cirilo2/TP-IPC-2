@@ -77,7 +77,7 @@ def read_file (archivo):
 
 diccionario1 = read_file("bolsa.csv")
 date = diccionario1["Date"]
-print(date)
+
 # 2
 # Lo que buscamos hacer cn esta funcion fue, calcular el precio promedio mes a mes, devolviendo dos secuencias, una con la fecha del primer dia de cada mes, y la segunda con ls precios promedios.
 # Entrada: Nombre de la accion y diccionario con la informacion del archivo creada en la funcion1 
@@ -90,7 +90,6 @@ def monthly_average (nombreaccion, diccionario1):
     fechas = []
     fechas = diccionario1['Date']
     for fecha in fechas:
-        print(fecha)
         mes = fecha.month
         if mes not in meses:
             meses.append(fecha)
