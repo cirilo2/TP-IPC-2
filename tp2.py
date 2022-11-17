@@ -55,25 +55,80 @@ def datetime2str(date, fmt="%Y-%m-%d"):
 
 """ >>>> DEFINAN SUS FUNCIONES A PARTIR DE AQUÍ >>>> """
 #Funcion 1 
+# Entrada: Ruta hacia un archivo 
+# Salida: Diccionario con informacion del archivo 
 def read_file (archivo):
-    diccionario = {}
-    with open ('bolsa.csv', 'r') as file: 
+    dic = {}
+    with open (archivo, 'r') as file: 
         f = file.readline().sptrip().split(",")
-        diccionario = read_file("bolsa.csv") 
+        dic = read_file("bolsa.csv") 
         for valor in f:
-            diccionario[valor] = []    
+            dic[valor] = []    
         for line in file:
             line = line.strip().split(',')
             for index, value in enumerate(line):
                 if index == 0:
-                    diccionario[f[index]].append(str2datetime(value))
+                    dic[f[index]].append(str2datetime(value))
                 else:
-                    diccionario[f[index]].append(float(value))
-    return diccionario
+                    dic[f[index]].append(float(value))
+    return dic
 
 diccionario1 = read_file("bolsa.csv")
 date = diccionario1["Date"]
 
+#Funcion 2
+# Lo que buscamos hacer cn esta funcion fue, calcular el precio promedio mes a mes, devolviendo dos secuencias, una con la fecha del primer dia de cada mes, y la segunda con ls precios promedios.
+# Entrada: Accion y diccionario con la informacion del archivo creada en la funcion1 
+# Salida: Dos secuencias con la misma longitud: una con la fecha del primer dia de cada mes y la segunda con los precios promedios de ese mes. 
+def monthly_average ():
+    enero = []
+    febrero = []
+    marzo = []
+    abril = []
+    mayo = []
+    junio = []
+    julio = []
+    agosto = []
+    septiembre = []
+    octubre = []
+    noviembre = []
+    diciembre = []
+    meses = []
+    fechas =[]
+
+    for fecha in dic['Date']:
+        mes = fecha.month
+        if mes not in meses :
+            fechas = append(mes)
+            meses = append(fecha)
+
+
+
+
+
+
+
+
+#Funcion 3
+with open('monthly_average_SATL.csv', 'w') as file:
+    '''
+    Genera un archivo llamado monthly_average_SATL.csv, el cual tiene la primer fecha de cada mes, y el promedio de la accion SATL, en formato csv
+    '''
+    file.write("Date,SATL")
+    fechas, promedios = monthly_average("SATL", diccionario1)
+    for i in range(len(fechas)):
+        file.write(f"{fechas[i]},{promedios[i]}\n")
+
+
+
+#Funcion 4
+# Entrada:
+# Salida:
+def max_gain(accion, dicionario, fecha_venta):
+
+#Funcion 5
+#Funcion 6
+#Funcion 7
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
 
