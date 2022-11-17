@@ -89,8 +89,8 @@ fechas = diccionario1['Date']
 for fecha in fechas:
     mes = fecha.month
     if mes not in meses:
-        meses = append(mes)
-        fechas = append(fecha)
+        meses.append(mes)
+        fechas.append(fecha)
 
 
 # Promedio 
@@ -158,8 +158,8 @@ for i, fecha in enumerate(diccionario1['Date']):
     for fecha in diccionario1['Date']:
         mes = fecha.month
         if mes not in meses :
-            fechas = append(mes)
-            meses = append(fecha)
+            fechas.append(mes)
+            meses.append(fecha)
 
 # Calculando los precios promedio:
 
@@ -189,6 +189,18 @@ def max_gain(nombre_accion, diccionario, fecha_venta):
 
 
 #Funcion 5
+
+def report_max_gains(diccionario, fecha_venta): 
+    archivo = open('resumen_mejor_compra.txt', 'w')
+    acciones = list(diccionario.keys())[1:]
+    for accion in acciones: 
+        retorno_ganancia,fecha_compra = max_gain(accion, diccionario, fecha_venta)
+        mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
+        archivo.write(mensaje)
+    archivo.close()
+prueba = report_max_gains(diccionario, "2022-02-28")
+
+
 #Funcion 6
 #Funcion 7
 
