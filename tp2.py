@@ -78,92 +78,79 @@ def read_file (archivo):
 diccionario1 = read_file("TP 2/bolsa.csv")
 date = diccionario1["Date"]
 
-#2
+# 2
 # Lo que buscamos hacer cn esta funcion fue, calcular el precio promedio mes a mes, devolviendo dos secuencias, una con la fecha del primer dia de cada mes, y la segunda con ls precios promedios.
-# Entrada: Nombre de la ccion y diccionario con la informacion del archivo creada en la funcion1 
+# Entrada: Nombre de la accion y diccionario con la informacion del archivo creada en la funcion1 
 # Salida: Dos secuencias con la misma longitud: una con la fecha del primer dia de cada mes y la segunda con los precios promedios de ese mes. 
 
-# def monthly_average (nombreaccion, diccionario1):
-#     meses = []
-#     fechas = []
-#     fechas = diccionario1['Date']
-#     for fecha in fechas:
-#         mes = fecha.month
-#         if mes not in meses:
-#             meses.append(mes)
-#             fechas.append(fecha)
+def monthly_average (nombreaccion, diccionario1):
 
-# promedio_total = []
-# enero = []
-# febrero = []
-# marzo = []
-# abril = []
-# mayo = []
-# junio = []
-# julio = []
-# agosto = []
-# septiembre = []
-# octubre = []
-# noviembre = []
-# diciembre = []
+# FECHA 
+    meses = []
+    fechas = []
+    fechas = diccionario1['Date']
+    for fecha in fechas:
+        mes = fecha.month
+        if mes not in meses:
+            meses.append(fecha)
+            fechas.append(mes)
 
-# for i, fecha in enumerate(diccionario1['Date']):
-#     mes = fecha.month
-#     if mes == 1:
-#             enero.append(diccionario1[nombreaccion][i])
-#     elif mes == 2:
-#             febrero.append(diccionario1[nombreaccion][i])
-#     elif mes == 3:
-#             marzo.append(diccionario1[nombreaccion][i])
-#     elif mes == 4:
-#             abril.append(diccionario1[nombreaccion][i])
-#     elif mes == 5:
-#             mayo.append(diccionario1[nombreaccion][i])
-#     elif mes == 6:
-#             junio.append(diccionario1[nombreaccion][i])
-#     elif mes == 7:
-#             julio.append(diccionario1[nombreaccion][i])
-#     elif mes == 8:
-#             agosto.append(diccionario1[nombreaccion][i])
-#     elif mes == 9:
-#             septiembre.append(diccionario1[nombreaccion][i])
-#     elif mes == 10:
-#             octubre.append(diccionario1[nombreaccion][i])
-#     elif mes == 11:
-#             noviembre.append(diccionario1[nombreaccion][i])
-#     elif mes == 12:
-#             diciembre.append(diccionario1[nombreaccion][i])
+promedio_total = []
+enero = []
+febrero = []
+marzo = []
+abril = []
+mayo = []
+junio = []
+julio = []
+agosto = []
+septiembre = []
+octubre = []
+noviembre = []
+diciembre = []
+
+# CALCULANDO PROMEDIO 
+
+for i, fecha in enumerate(diccionario1['Date']):
+    mes = fecha.month
+    if mes == 1:
+            enero.append(diccionario1[nombreaccion][i])
+    elif mes == 2:
+            febrero.append(diccionario1[nombreaccion][i])
+    elif mes == 3:
+            marzo.append(diccionario1[nombreaccion][i])
+    elif mes == 4:
+            abril.append(diccionario1[nombreaccion][i])
+    elif mes == 5:
+            mayo.append(diccionario1[nombreaccion][i])
+    elif mes == 6:
+            junio.append(diccionario1[nombreaccion][i])
+    elif mes == 7:
+            julio.append(diccionario1[nombreaccion][i])
+    elif mes == 8:
+            agosto.append(diccionario1[nombreaccion][i])
+    elif mes == 9:
+            septiembre.append(diccionario1[nombreaccion][i])
+    elif mes == 10:
+            octubre.append(diccionario1[nombreaccion][i])
+    elif mes == 11:
+            noviembre.append(diccionario1[nombreaccion][i])
+    elif mes == 12:
+            diciembre.append(diccionario1[nombreaccion][i])
 
 
-#     promedio1 = sum(enero) / len(enero)
-#     promedio2 = sum(febrero) / len(febrero)
-#     promedio3 = sum(marzo) / len(marzo)
-#     promedio4 = sum(abril) / len(abril)
-#     promedio5 = sum(mayo) / len(mayo)
-#     promedio6 = sum(junio) / len(junio)
-#     promedio7 = sum(julio) / len(julio)
-#     promedio8 = sum(agosto) / len(agosto)
-#     promedio9 = sum(septiembre) / len(septiembre)
-#     promedio10 = sum(octubre)/ len(octubre)
-#     promedio11 = sum(noviembre) / len(noviembre)
-#     promedio12 = sum(diciembre) / len(diciembre)
-   
-<<<<<<< HEAD
-#     promedio_total.append(promedio1)
-#     promedio_total.append(promedio2)
-#     promedio_total.append(promedio3)
-#     promedio_total.append(promedio4)
-#     promedio_total.append(promedio5)
-#     promedio_total.append(promedio6)
-#     promedio_total.append(promedio7)
-#     promedio_total.append(promedio8)
-#     promedio_total.append(promedio9)
-#     promedio_total.append(promedio10)
-#     promedio_total.append(promedio11) 
-#     promedio_total.append(promedio12) 
-    
-#     return fechas, promedio_total
-=======
+    promedio1 = sum(enero) / len(enero)
+    promedio2 = sum(febrero) / len(febrero)
+    promedio3 = sum(marzo) / len(marzo)
+    promedio4 = sum(abril) / len(abril)
+    promedio5 = sum(mayo) / len(mayo)
+    promedio6 = sum(junio) / len(junio)
+    promedio7 = sum(julio) / len(julio)
+    promedio8 = sum(agosto) / len(agosto)
+    promedio9 = sum(septiembre) / len(septiembre)
+    promedio10 = sum(octubre)/ len(octubre)
+    promedio11 = sum(noviembre) / len(noviembre)
+    promedio12 = sum(diciembre) / len(diciembre)
     promedio_total.append(promedio1)
     promedio_total.append(promedio2)
     promedio_total.append(promedio3)
@@ -176,20 +163,10 @@ date = diccionario1["Date"]
     promedio_total.append(promedio10)
     promedio_total.append(promedio11) 
     promedio_total.append(promedio12) 
-    return fechas, promedio_total
->>>>>>> 700fd6a09961eb11f6dd23bee108a3f98dd79590
+    return fechas, promedio_total 
 
-# promedioo_accion = monthly_average("SATL", diccionario1)
+prom_accion = monthly_average("SATL", diccionario1)
 
-       
-# # Creando lista de las fechas del primer dia de cada mes 
-# for fecha in diccionario1['Date']:
-#     mes = fecha.month
-#     if mes not in meses:
-#         fechas.append(mes)
-#         meses.append(fecha)
-
-# Calculando los precios promedio:
 
 #3
 with open('TP 2/monthly_average_SATL.csv', 'w', encoding="utf-8") as file:
