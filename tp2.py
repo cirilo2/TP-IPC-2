@@ -160,7 +160,6 @@ for i, fecha in enumerate(diccionario1['Date']):
     promedio_total.append(promedio10)
     promedio_total.append(promedio11) 
     promedio_total.append(promedio12) 
-    
     return fechas, promedio_total
 
 promedioo_accion = monthly_average("SATL", diccionario1)
@@ -217,12 +216,69 @@ def report_max_gains(diccionario, fecha_venta):
         mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
         archivo.write(mensaje)
     archivo.close()
-prueba = report_max_gains(diccionario1, "2022-02-28")
+test = report_max_gains(diccionario1, "2022-02-28")
 
 
 #6
 
+dates = diccionario1["date"]
+prices = diccionario1[accion]
+fecha_compra = 0
+precio_compra = 0
+precio_venta = 0
+
+for fecha, pre in zip(fechas, precios):
+    if precio_compra == 0:
+        precio_compra = pre
+        fecha_compra = fecha
+    elif pre < precio_compra:
+        precio_compra = pre
+        fecha_compra = fecha
+    else:
+        precio_venta = pre
+        break
+ganancia = (precio_venta - precio_compra)/precio_compra
+print(fecha_compra , ganancia) 
+
 #7
+
+#a
+
+def monthly_average_bar_plot(accion,diccionaro1):
+    fechas, promedio = monthly_average(accion, diccionario1)
+
+    plt.figure()
+    plt.rc('xtick', labelsize = 9)
+    plt.bar(fechas, promedio)
+    plt.xticks(rotation = 30)
+    plt.xlabel("Fecha", horizontalalignment = 'right')
+    plt.ylabel("Precio accion")
+    plt.gfc().subplots_adjust(bottom = 0.15)
+
+    grafico = plt.savefig(f"monthly_average_bar_plot_{accion}.png")
+    return grafico
+
+#b
+
+def plot_max_gain(fecha_venta, diccionario1):
+        l_ganancias = []
+        l_acciones = []
+
+        for accion in diccionario1.keys():
+            if accion == "date":
+                continue
+            fecha , ganancia = max_gain(accion , diccionario1 , fecha_venta)
+            l_ganancias.append(ganancia)
+            l_acciones.append(accion)
+
+        plt.figure()
+        plt.bar(l_acciones, l_ganancias)
+
+        plt.xlabel("ACIONES")
+        plt.ylabel("GANANCIA MEJOR INVERSION")
+        plt.gfc().subplots_adjust(bottom = 0.15)
+        grafico = plt.savefig("max_gains.png")
+        return grafico
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
 
