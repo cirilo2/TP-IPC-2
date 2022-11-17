@@ -62,8 +62,8 @@ def datetime2str(date, fmt="%Y-%m-%d"):
 def read_file (archivo):
     with open (archivo, 'r') as file: 
         dic = {}
-        f = file.readline().sptrip().split(",")
-        dic = read_file("TP 2/bolsa.csv") 
+        f = file.readline().strip().split(",")
+        #dic = read_file("bolsa.csv") 
         for valor in f:
             dic[valor] = []    
         for line in file:
@@ -75,7 +75,7 @@ def read_file (archivo):
                     dic[f[index]].append(float(value))
     return dic
 
-diccionario1 = read_file("TP 2/bolsa.csv")
+diccionario1 = read_file("bolsa.csv")
 date = diccionario1["Date"]
 
 # 2
@@ -95,47 +95,47 @@ def monthly_average (nombreaccion, diccionario1):
             meses.append(fecha)
             fechas.append(mes)
 
-promedio_total = []
-enero = []
-febrero = []
-marzo = []
-abril = []
-mayo = []
-junio = []
-julio = []
-agosto = []
-septiembre = []
-octubre = []
-noviembre = []
-diciembre = []
+    promedio_total = []
+    enero = []
+    febrero = []
+    marzo = []
+    abril = []
+    mayo = []
+    junio = []
+    julio = []
+    agosto = []
+    septiembre = []
+    octubre = []
+    noviembre = []
+    diciembre = []
 
 # CALCULANDO PROMEDIO 
 
-for i, fecha in enumerate(diccionario1['Date']):
-    mes = fecha.month
-    if mes == 1:
+    for i, fecha in enumerate(diccionario1['Date']):
+        mes = fecha.month
+        if mes == 1:
             enero.append(diccionario1[nombreaccion][i])
-    elif mes == 2:
+        elif mes == 2:
             febrero.append(diccionario1[nombreaccion][i])
-    elif mes == 3:
+        elif mes == 3:
             marzo.append(diccionario1[nombreaccion][i])
-    elif mes == 4:
+        elif mes == 4:
             abril.append(diccionario1[nombreaccion][i])
-    elif mes == 5:
+        elif mes == 5:
             mayo.append(diccionario1[nombreaccion][i])
-    elif mes == 6:
+        elif mes == 6:
             junio.append(diccionario1[nombreaccion][i])
-    elif mes == 7:
+        elif mes == 7:
             julio.append(diccionario1[nombreaccion][i])
-    elif mes == 8:
+        elif mes == 8:
             agosto.append(diccionario1[nombreaccion][i])
-    elif mes == 9:
+        elif mes == 9:
             septiembre.append(diccionario1[nombreaccion][i])
-    elif mes == 10:
+        elif mes == 10:
             octubre.append(diccionario1[nombreaccion][i])
-    elif mes == 11:
+        elif mes == 11:
             noviembre.append(diccionario1[nombreaccion][i])
-    elif mes == 12:
+        elif mes == 12:
             diciembre.append(diccionario1[nombreaccion][i])
 
 
@@ -213,24 +213,26 @@ test = report_max_gains(diccionario1, "2022-02-28")
 
 #6
 
-dates = diccionario1["date"]
-prices = diccionario1[nombreaccion]
-fecha_compra = 0
-precio_compra = 0
-precio_venta = 0
+def max_gain( accion, diccionario , fecha_venta):
 
-for fecha, pre in zip(fechas, precios):
-    if precio_compra == 0:
-        precio_compra = pre
-        fecha_compra = fecha
-    elif pre < precio_compra:
-        precio_compra = pre
-        fecha_compra = fecha
-    else:
-        precio_venta = pre
-        break
-ganancia = (precio_venta - precio_compra)/precio_compra
-print(fecha_compra , ganancia) 
+    fechas = diccionario1["fecha"]
+    precios = diccionario1[accion]
+    fecha_compra = 0
+    precio_compra = 0
+    precio_venta = 0
+
+    for fecha, pre in zip(fechas, precios):
+        if precio_compra == 0:
+            precio_compra = pre
+            fecha_compra = fecha
+        elif pre < precio_compra:
+            precio_compra = pre
+            fecha_compra = fecha
+        else:
+            precio_venta = pre
+            break
+    ganancia = (precio_venta - precio_compra)/precio_compra
+    return fecha_compra , ganancia 
 
 #7
 
