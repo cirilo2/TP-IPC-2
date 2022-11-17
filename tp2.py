@@ -202,51 +202,13 @@ prueba = report_max_gains(diccionario, "2022-02-28")
 
 
 #Funcion 6
+
+
+
+
+
+
 #Funcion 7
-
-#a
-
-def monthly_average_bar_plot(accion,diccionario1):
-    fechas, promedio = monthly_average(accion, diccionario1)
-
-    plt.figure()
-    plt.rc('xtick', labelsize = 9)
-    plt.bar(fechas, promedio)
-    plt.xticks(rotation = 30)
-    plt.xlabel("Fecha", horizontalalignment = 'right')
-    plt.ylabel("Precio accion")
-    plt.gfc().subplots_adjust(bottom = 0.15)
-
-    grafico = plt.savefig(f"monthly_average_bar_plot_{accion}.png")
-    return grafico
-
-#b
-
-def plot_max_gain(fecha_venta, diccionario1):
-        l_ganancias = []
-        l_acciones = []
-
-        for accion in diccionario1.keys():
-            if accion == "date":
-                continue
-            fecha , ganancia = max_gain(accion , diccionario1 , fecha_venta)
-            l_ganancias.append(ganancia)
-            l_acciones.append(accion)
-
-        plt.figure()
-        plt.bar(l_acciones, l_ganancias)
-
-        plt.xlabel("ACIONES")
-        plt.ylabel("GANANCIA MEJOR INVERSION")
-        plt.gfc().subplots_adjust(bottom = 0.15)
-        grafico = plt.savefig("max_gains.png")
-        return grafico
-
-
-
-
-
-
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
 
