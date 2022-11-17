@@ -203,11 +203,6 @@ prueba = report_max_gains(diccionario, "2022-02-28")
 
 #Funcion 6
 
-
-
-
-
-
 #Funcion 7
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
