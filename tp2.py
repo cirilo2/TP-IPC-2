@@ -80,7 +80,21 @@ date = diccionario1["Date"]
 # Lo que buscamos hacer cn esta funcion fue, calcular el precio promedio mes a mes, devolviendo dos secuencias, una con la fecha del primer dia de cada mes, y la segunda con ls precios promedios.
 # Entrada: Accion y diccionario con la informacion del archivo creada en la funcion1 
 # Salida: Dos secuencias con la misma longitud: una con la fecha del primer dia de cada mes y la segunda con los precios promedios de ese mes. 
-def monthly_average ():
+
+def monthly_average (nombreaccion, diccionario):
+# Fechas 
+meses = []
+fechas = []
+fechas = diccionario1['Date']
+for fecha in fechas:
+    mes = fecha.month
+    if mes not in meses:
+        meses = append(mes)
+        fechas = append(fecha)
+
+
+# Promedio 
+    promedio =  []
     enero = []
     febrero = []
     marzo = []
@@ -93,38 +107,86 @@ def monthly_average ():
     octubre = []
     noviembre = []
     diciembre = []
-    meses = []
-    fechas =[]
 
-    for fecha in dic['Date']:
+for i, fecha in enumerate(diccionario1['Date']):
+    mes = fecha.month
+    if mes == 1:
+            enero.append(diccionario1[nombreaccion][i])
+    elif mes == 2:
+            febrero.append(diccionario1[nombreaccion][i])
+    elif mes == 3:
+            marzo.append(diccionario1[nombreaccion][i])
+    elif mes == 4:
+            abril.append(diccionario1[nombreaccion][i])
+    elif mes == 5:
+            mayo.append(diccionario1[nombreaccion][i])
+    elif mes == 6:
+            junio.append(diccionario1[nombreaccion][i])
+    elif mes == 7:
+            julio.append(diccionario1[nombreaccion][i])
+    elif mes == 8:
+            agosto.append(diccionario1[nombreaccion][i])
+    elif mes == 9:
+            septiembre.append(diccionario1[nombreaccion][i])
+    elif mes == 10:
+            octubre.append(diccionario1[nombreaccion][i])
+    elif mes == 11:
+            noviembre.append(diccionario1[nombreaccion][i])
+    elif mes == 12:
+            diciembre.append(diccionario1[nombreaccion][i])
+    elif mes == 1:
+            enero.append(diccionario1[nombreaccion][i])
+    elif mes == 2:
+            febrero.append(diccionario1[nombreaccion][i])
+    elif mes == 3:
+           marzo.append(diccionario1[nombreaccion][i])
+    elif mes == 4:
+            abril.append(diccionario1[nombreaccion][i])
+    elif mes == 5:
+            mayo.append(diccionario1[nombreaccion][i])
+    elif mes == 6:
+            junio.append(diccionario1[nombreaccion][i])
+    elif mes == 7:
+            julio.append(diccionario1[nombreaccion][i])
+    elif mes == 8:
+            agosto.append(diccionario1[nombreaccion][i])
+    elif mes == 9:
+            septiembre.append(diccionario1[nombreaccion][i])
+
+       
+# Creando lista de las fechas del primer dia de cada mes 
+    for fecha in diccionario1['Date']:
         mes = fecha.month
         if mes not in meses :
             fechas = append(mes)
             meses = append(fecha)
 
-
-
-
-
-
-
+# Calculando los precios promedio:
 
 #Funcion 3
 with open('monthly_average_SATL.csv', 'w') as file:
-    '''
-    Genera un archivo llamado monthly_average_SATL.csv, el cual tiene la primer fecha de cada mes, y el promedio de la accion SATL, en formato csv
-    '''
     file.write("Date,SATL")
     fechas, promedios = monthly_average("SATL", diccionario1)
     for i in range(len(fechas)):
         file.write(f"{fechas[i]},{promedios[i]}\n")
 
-
-
 #Funcion 4
 # Entrada:
 # Salida:
-def max_gain(accion, dicionario, fecha_venta):
+def max_gain(nombre_accion, diccionario, fecha_venta):
+    fecha_venta = str2datetime(fecha_venta)
+    values = diccionario[nombre_accion]
+    ind = diccionario["Date"].index(fecha_venta)
+    valor = values[ind]
+    menor = valor
+    fecha_compra = diccionario["Date"][ind]
+    for x in range(ind):
+        if values[x] < menor:
+            menor = values[x]
+            fecha_compra = diccionario["Date"][x]
+    ganancia = (valor - menor) / menor
+    return fecha_compra, ganancia
+
 
 #Funcion 5
 #Funcion 6
