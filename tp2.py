@@ -83,95 +83,95 @@ date = diccionario1["Date"]
 # Entrada: Nombre de la ccion y diccionario con la informacion del archivo creada en la funcion1 
 # Salida: Dos secuencias con la misma longitud: una con la fecha del primer dia de cada mes y la segunda con los precios promedios de ese mes. 
 
-def monthly_average (nombreaccion, diccionario1):
-    meses = []
-    fechas = []
-    fechas = diccionario1['Date']
-    for fecha in fechas:
-        mes = fecha.month
-        if mes not in meses:
-            meses.append(mes)
-            fechas.append(fecha)
+# def monthly_average (nombreaccion, diccionario1):
+#     meses = []
+#     fechas = []
+#     fechas = diccionario1['Date']
+#     for fecha in fechas:
+#         mes = fecha.month
+#         if mes not in meses:
+#             meses.append(mes)
+#             fechas.append(fecha)
 
-promedio_total = []
-enero = []
-febrero = []
-marzo = []
-abril = []
-mayo = []
-junio = []
-julio = []
-agosto = []
-septiembre = []
-octubre = []
-noviembre = []
-diciembre = []
+# promedio_total = []
+# enero = []
+# febrero = []
+# marzo = []
+# abril = []
+# mayo = []
+# junio = []
+# julio = []
+# agosto = []
+# septiembre = []
+# octubre = []
+# noviembre = []
+# diciembre = []
 
-for i, fecha in enumerate(diccionario1['Date']):
-    mes = fecha.month
-    if mes == 1:
-            enero.append(diccionario1[nombreaccion][i])
-    elif mes == 2:
-            febrero.append(diccionario1[nombreaccion][i])
-    elif mes == 3:
-            marzo.append(diccionario1[nombreaccion][i])
-    elif mes == 4:
-            abril.append(diccionario1[nombreaccion][i])
-    elif mes == 5:
-            mayo.append(diccionario1[nombreaccion][i])
-    elif mes == 6:
-            junio.append(diccionario1[nombreaccion][i])
-    elif mes == 7:
-            julio.append(diccionario1[nombreaccion][i])
-    elif mes == 8:
-            agosto.append(diccionario1[nombreaccion][i])
-    elif mes == 9:
-            septiembre.append(diccionario1[nombreaccion][i])
-    elif mes == 10:
-            octubre.append(diccionario1[nombreaccion][i])
-    elif mes == 11:
-            noviembre.append(diccionario1[nombreaccion][i])
-    elif mes == 12:
-            diciembre.append(diccionario1[nombreaccion][i])
+# for i, fecha in enumerate(diccionario1['Date']):
+#     mes = fecha.month
+#     if mes == 1:
+#             enero.append(diccionario1[nombreaccion][i])
+#     elif mes == 2:
+#             febrero.append(diccionario1[nombreaccion][i])
+#     elif mes == 3:
+#             marzo.append(diccionario1[nombreaccion][i])
+#     elif mes == 4:
+#             abril.append(diccionario1[nombreaccion][i])
+#     elif mes == 5:
+#             mayo.append(diccionario1[nombreaccion][i])
+#     elif mes == 6:
+#             junio.append(diccionario1[nombreaccion][i])
+#     elif mes == 7:
+#             julio.append(diccionario1[nombreaccion][i])
+#     elif mes == 8:
+#             agosto.append(diccionario1[nombreaccion][i])
+#     elif mes == 9:
+#             septiembre.append(diccionario1[nombreaccion][i])
+#     elif mes == 10:
+#             octubre.append(diccionario1[nombreaccion][i])
+#     elif mes == 11:
+#             noviembre.append(diccionario1[nombreaccion][i])
+#     elif mes == 12:
+#             diciembre.append(diccionario1[nombreaccion][i])
 
 
-    promedio1 = sum(enero) / len(enero)
-    promedio2 = sum(febrero) / len(febrero)
-    promedio3 = sum(marzo) / len(marzo)
-    promedio4 = sum(abril) / len(abril)
-    promedio5 = sum(mayo) / len(mayo)
-    promedio6 = sum(junio) / len(junio)
-    promedio7 = sum(julio) / len(julio)
-    promedio8 = sum(agosto) / len(agosto)
-    promedio9 = sum(septiembre) / len(septiembre)
-    promedio10 = sum(octubre)/ len(octubre)
-    promedio11 = sum(noviembre) / len(noviembre)
-    promedio12 = sum(diciembre) / len(diciembre)
+#     promedio1 = sum(enero) / len(enero)
+#     promedio2 = sum(febrero) / len(febrero)
+#     promedio3 = sum(marzo) / len(marzo)
+#     promedio4 = sum(abril) / len(abril)
+#     promedio5 = sum(mayo) / len(mayo)
+#     promedio6 = sum(junio) / len(junio)
+#     promedio7 = sum(julio) / len(julio)
+#     promedio8 = sum(agosto) / len(agosto)
+#     promedio9 = sum(septiembre) / len(septiembre)
+#     promedio10 = sum(octubre)/ len(octubre)
+#     promedio11 = sum(noviembre) / len(noviembre)
+#     promedio12 = sum(diciembre) / len(diciembre)
    
-    promedio_total.append(promedio1)
-    promedio_total.append(promedio2)
-    promedio_total.append(promedio3)
-    promedio_total.append(promedio4)
-    promedio_total.append(promedio5)
-    promedio_total.append(promedio6)
-    promedio_total.append(promedio7)
-    promedio_total.append(promedio8)
-    promedio_total.append(promedio9)
-    promedio_total.append(promedio10)
-    promedio_total.append(promedio11) 
-    promedio_total.append(promedio12) 
+#     promedio_total.append(promedio1)
+#     promedio_total.append(promedio2)
+#     promedio_total.append(promedio3)
+#     promedio_total.append(promedio4)
+#     promedio_total.append(promedio5)
+#     promedio_total.append(promedio6)
+#     promedio_total.append(promedio7)
+#     promedio_total.append(promedio8)
+#     promedio_total.append(promedio9)
+#     promedio_total.append(promedio10)
+#     promedio_total.append(promedio11) 
+#     promedio_total.append(promedio12) 
     
-    return fechas, promedio_total
+#     return fechas, promedio_total
 
-promedioo_accion = monthly_average("SATL", diccionario1)
+# promedioo_accion = monthly_average("SATL", diccionario1)
 
        
-# Creando lista de las fechas del primer dia de cada mes 
-for fecha in diccionario1['Date']:
-    mes = fecha.month
-    if mes not in meses:
-        fechas.append(mes)
-        meses.append(fecha)
+# # Creando lista de las fechas del primer dia de cada mes 
+# for fecha in diccionario1['Date']:
+#     mes = fecha.month
+#     if mes not in meses:
+#         fechas.append(mes)
+#         meses.append(fecha)
 
 # Calculando los precios promedio:
 
@@ -203,11 +203,9 @@ def max_gain(nombreaccion, diccinario1, fecha_venta):
     ganancia = (precio_venta - precio_compra) / precio_compra
     return fecha, ganancia
 
-
 #5
 # Entrada:
 # Salida:
-
 
 def report_max_gains(diccionario, fecha_venta): 
     archivo = open('resumen_mejor_compra.txt', 'w')
@@ -222,7 +220,64 @@ prueba = report_max_gains(diccionario1, "2022-02-28")
 
 #6
 
+dates = diccionario1["date"]
+prices = diccionario1[accion]
+fecha_compra = 0
+precio_compra = 0
+precio_venta = 0
+
+for fecha, pre in zip(fechas, precios):
+    if precio_compra == 0:
+        precio_compra = pre
+        fecha_compra = fecha
+    elif pre < precio_compra:
+        precio_compra = pre
+        fecha_compra = fecha
+    else:
+        precio_venta = pre
+        break
+ganancia = (precio_venta - precio_compra)/precio_compra
+print(fecha_compra , ganancia) 
+
 #7
+
+#a
+
+def monthly_average_bar_plot(accion,diccionaro1):
+    fechas, promedio = monthly_average(accion, diccionario1)
+
+    plt.figure()
+    plt.rc('xtick', labelsize = 9)
+    plt.bar(fechas, promedio)
+    plt.xticks(rotation = 30)
+    plt.xlabel("Fecha", horizontalalignment = 'right')
+    plt.ylabel("Precio accion")
+    plt.gfc().subplots_adjust(bottom = 0.15)
+
+    grafico = plt.savefig(f"monthly_average_bar_plot_{accion}.png")
+    return grafico
+
+#b
+
+def plot_max_gain(fecha_venta, diccionario1):
+        l_ganancias = []
+        l_acciones = []
+
+        for accion in diccionario1.keys():
+            if accion == "date":
+                continue
+            fecha , ganancia = max_gain(accion , diccionario1 , fecha_venta)
+            l_ganancias.append(ganancia)
+            l_acciones.append(accion)
+
+        plt.figure()
+        plt.bar(l_acciones, l_ganancias)
+
+        plt.xlabel("ACIONES")
+        plt.ylabel("GANANCIA MEJOR INVERSION")
+        plt.gfc().subplots_adjust(bottom = 0.15)
+        grafico = plt.savefig("max_gains.png")
+        return grafico
 
 """ >>>> ESCRIBAN SU CÓDIGO A PARTIR DE AQUÍ >>>> """
 
