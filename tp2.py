@@ -148,6 +148,7 @@ date = diccionario1["Date"]
 #     promedio11 = sum(noviembre) / len(noviembre)
 #     promedio12 = sum(diciembre) / len(diciembre)
    
+<<<<<<< HEAD
 #     promedio_total.append(promedio1)
 #     promedio_total.append(promedio2)
 #     promedio_total.append(promedio3)
@@ -162,6 +163,21 @@ date = diccionario1["Date"]
 #     promedio_total.append(promedio12) 
     
 #     return fechas, promedio_total
+=======
+    promedio_total.append(promedio1)
+    promedio_total.append(promedio2)
+    promedio_total.append(promedio3)
+    promedio_total.append(promedio4)
+    promedio_total.append(promedio5)
+    promedio_total.append(promedio6)
+    promedio_total.append(promedio7)
+    promedio_total.append(promedio8)
+    promedio_total.append(promedio9)
+    promedio_total.append(promedio10)
+    promedio_total.append(promedio11) 
+    promedio_total.append(promedio12) 
+    return fechas, promedio_total
+>>>>>>> 700fd6a09961eb11f6dd23bee108a3f98dd79590
 
 # promedioo_accion = monthly_average("SATL", diccionario1)
 
@@ -215,7 +231,7 @@ def report_max_gains(diccionario, fecha_venta):
         mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
         archivo.write(mensaje)
     archivo.close()
-prueba = report_max_gains(diccionario1, "2022-02-28")
+test = report_max_gains(diccionario1, "2022-02-28")
 
 
 #6
