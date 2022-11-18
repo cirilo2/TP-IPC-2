@@ -226,7 +226,7 @@ def report_max_gains(dic, fecha_venta):
         for accion in dic.keys():
             if accion == "Date":
                 continue
-            f_compra , g_accion = max_gains(accion , dic , fecha_venta)
+            f_compra , g_accion = max_gain(accion , dic , fecha_venta)
             if g_accion >= 0:
                 f.write(f"{accion} genera una ganancia de {g_accion*100}% habiendo comprando en {f_compra.date()} y vendiendose en {fecha_venta}\n")
             else:
