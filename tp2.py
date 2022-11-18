@@ -250,7 +250,7 @@ def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022
     for y in todo_accion_grafica:
         eje_y.append(int(y))
     
-    plt.plot(str2datetime(eje_x), eje_y, color = "r")
+    plt.plot(str2datetime(eje_x), eje_y, color = "m")
     plt.title(f'Acciones de {accion_grafica}')
     plt.xticks(rotation=65)
     plt.gcf().subplots_adjust(bottom=0.20)
