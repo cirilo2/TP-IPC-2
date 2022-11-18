@@ -259,6 +259,9 @@ def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022
     plt.show()
     plt.savefig(f"price_{accion_grafica}.png")
 
+grafico = plt.savefig(f"plot_price.png")
+
+return grafico
 
 #7
 
