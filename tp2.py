@@ -93,7 +93,6 @@ def monthly_average (nombreaccion, diccionario1):
         mes = fecha.month
         if mes not in meses:
             meses.append(fecha)
-            fechas.append(mes)
 
     promedio_total = []
     enero = []
@@ -169,11 +168,12 @@ prom_accion = monthly_average("SATL", diccionario1)
 
 
 #3
-with open('TP 2/monthly_average_SATL.csv', 'w', encoding="utf-8") as file:
-    file.write("Date,SATL")
-    fechas, promedios = monthly_average("SATL", diccionario1)
-    for i in range(len(fechas)):
-        file.write(f"{fechas[i]},{promedios[i]}\n")
+fechas = []
+with open('monthly_average_SATL.csv', 'w', encoding="utf-8") as file:
+   file.write("Date,SATL")
+   fechas, promedios = monthly_average("SATL", diccionario1)
+   for i in range(len(fechas)): 
+       file.write(f"{fechas[i]},{promedios[i]}\n")
 
 
 #4
@@ -218,8 +218,8 @@ def max_gain( accion, diccionario , fecha_venta):
     return fecha_compra , ganancia     
 
 #5
-# Entrada:
-# Salida:
+# Entrada: Diccionario y fecha de venta 
+# Salida: Archivo de resumen en formato texto que informe la mayor ganancia de todas las acciones
 def report_max_gains(dic, fecha_venta):
 
     with open ("resumen_mejor_compra.txt","w")as f:
@@ -236,7 +236,7 @@ report_max_gains(diccionario1, "2021-11-26")
 
 #6
 
-def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022-06-01"):
+def plot_price(accion_grafica , diccionario, start = "2021-10-04" , end = "2022-06-01"):
     e = datetime2str(diccionario1)
     principio = e.index(start)
     final = e.index(end)
@@ -250,7 +250,7 @@ def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022
     for y in todo_accion_grafica:
         eje_y.append(int(y))
     
-    plt.plot(str2datetime(eje_x), eje_y, color = "m")
+    plt.plot(str2datetime(eje_x), eje_y, color = "r")
     plt.title(f'Acciones de {accion_grafica}')
     plt.xticks(rotation=65)
     plt.gcf().subplots_adjust(bottom=0.20)
@@ -259,7 +259,6 @@ def plot_price(accion_grafica , diccionario , start = "2021-10-04" , end = "2022
     plt.show()
     plt.savefig(f"price_{accion_grafica}.png")
 
-plot_price("MELI", date)
 
 #7
 
