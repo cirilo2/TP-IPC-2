@@ -220,16 +220,18 @@ def max_gain( accion, diccionario , fecha_venta):
 #5
 # Entrada:
 # Salida:
+def report_max_gains(dic, fecha_venta):
 
-def report_max_gains(diccionario, fecha_venta): 
-    archivo = open('resumen_mejor_compra.txt', 'w')
-    acciones = list(diccionario1.keys())[1:]
-    for accion in acciones: 
-        retorno_ganancia,fecha_compra = max_gain(accion, diccionario, fecha_venta)
-        mensaje = accion + " genera una ganancia de " + str(round((retorno_ganancia*100), 2)) + "% habiendo comprando en " + fecha_compra + " y vendiendose en" + fecha_venta + "\n"
-        archivo.write(mensaje)
-    archivo.close()
-test = report_max_gains(diccionario1, "2022-02-28")
+    with open ("resumen_mejor_compra.txt","w")as f:
+        for accion in dic.keys():
+            if accion == "Date":
+                continue
+            f_compra , g_accion = max_gains(accion , dic , fecha_venta)
+            if g_accion >= 0:
+                f.write(f"{accion} genera una ganancia de {g_accion*100}% habiendo comprando en {f_compra.date()} y vendiendose en {fecha_venta}\n")
+            else:
+                file.write(f"{accion} genera una ganancia de {g_accion*100}% habiendo comprando en {f_compra.date()} y vendiendose en {fecha_venta}. La acción {accion} solo genera péridas \n")
+report_max_gains(diccionario1, "2021-11-26")
 
 
 #6
